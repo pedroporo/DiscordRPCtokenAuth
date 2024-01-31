@@ -8,7 +8,7 @@ const client = new Discord.Client({
 
 client.on('ready', async () => {
 
-
+ app=process.env.appid;
     console.clear();
   
     console.log(`Connectado como: ${client.user.tag}`
@@ -35,8 +35,12 @@ client.on('ready', async () => {
       .setAssetsLargeText(process.env.appLargeImageText)
       .setAssetsSmallImage(getExtendURL[1].external_asset_path)
       .setAssetsSmallText(process.env.appSmallImageText)
-      .addButton(process.env.appButton1Text, process.env.appButton1URL)
-      .addButton(process.env.appButton2Text,process.env.appButton2URL)
+      //Si no quereis que haiga botones poned los .addButton asi 
+      /*.appButton
+         .appButton*/
+
+      /*.addButton(process.env.appButton1Text, process.env.appButton1URL)
+      .addButton(process.env.appButton2Text,process.env.appButton2URL)*/
       
   
     client.user.setActivity(r);
