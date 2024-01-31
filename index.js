@@ -13,6 +13,12 @@ client.on('ready', async () => {
   
     console.log(`Connectado como: ${client.user.tag}`
     );
+    const getExtendURL = await Discord.RichPresence.getExternal(
+      client,
+      process.env.appid,
+      process.env.appLargeImageURL, // Required if the image you use is not in Discord
+      process.env.appSmallImageURL,
+    );
 
     const r = new Discord.RichPresence()
       .setApplicationId(process.env.appid)
@@ -25,16 +31,16 @@ client.on('ready', async () => {
   
   
       .setStartTimestamp(Date.now())
-      .setAssetsLargeImage(process.env.appLargeImageURL)
+      .setAssetsLargeImage(getExtendURL[0].external_asset_path)
       .setAssetsLargeText(process.env.appLargeImageText)
-      .setAssetsSmallImage(process.env.appSmallImageURL)
+      .setAssetsSmallImage(getExtendURL[1].external_asset_path)
       .setAssetsSmallText(process.env.appSmallImageText)
       .addButton(process.env.appButton1Text, process.env.appButton1URL)
       .addButton(process.env.appButton2Text,process.env.appButton2URL)
       
   
     client.user.setActivity(r);
-    client.user.setPresence({ status: process.env.appStatus });
+    client.user.setPresence({ status: (process.env.appStatus) });
   })
 
   
