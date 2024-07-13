@@ -14,7 +14,7 @@ client.on("ready", async () => {
   const getExtendURL = await Discord.RichPresence.getExternal(
     client,
     process.env.appid,
-    process.env.appLargeImageURL, // Required if the image you use is not in Discord
+    process.env.appLargeImageURL,
     process.env.appSmallImageURL
   );
 
